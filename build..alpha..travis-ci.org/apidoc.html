@@ -1,0 +1,1743 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/enricomarino/is"
+
+    >is (v3.2.1)</a>
+</h1>
+<h4>the definitive JavaScript type testing library</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.is">module is</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.a">
+            function <span class="apidocSignatureSpan">is.</span>a
+            <span class="apidocSignatureSpan">(value, type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.args">
+            function <span class="apidocSignatureSpan">is.</span>args
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.arguments">
+            function <span class="apidocSignatureSpan">is.</span>arguments
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.array">
+            function <span class="apidocSignatureSpan">is.</span>array
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.arraylike">
+            function <span class="apidocSignatureSpan">is.</span>arraylike
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.base64">
+            function <span class="apidocSignatureSpan">is.</span>base64
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.bool">
+            function <span class="apidocSignatureSpan">is.</span>bool
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.boolean">
+            function <span class="apidocSignatureSpan">is.</span>boolean
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.date">
+            function <span class="apidocSignatureSpan">is.</span>date
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.decimal">
+            function <span class="apidocSignatureSpan">is.</span>decimal
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.defined">
+            function <span class="apidocSignatureSpan">is.</span>defined
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.divisibleBy">
+            function <span class="apidocSignatureSpan">is.</span>divisibleBy
+            <span class="apidocSignatureSpan">(value, n)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.element">
+            function <span class="apidocSignatureSpan">is.</span>element
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.empty">
+            function <span class="apidocSignatureSpan">is.</span>empty
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.equal">
+            function <span class="apidocSignatureSpan">is.</span>equal
+            <span class="apidocSignatureSpan">(value, other)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.error">
+            function <span class="apidocSignatureSpan">is.</span>error
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.even">
+            function <span class="apidocSignatureSpan">is.</span>even
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.false">
+            function <span class="apidocSignatureSpan">is.</span>false
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.fn">
+            function <span class="apidocSignatureSpan">is.</span>fn
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.function">
+            function <span class="apidocSignatureSpan">is.</span>function
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.ge">
+            function <span class="apidocSignatureSpan">is.</span>ge
+            <span class="apidocSignatureSpan">(value, other)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.gt">
+            function <span class="apidocSignatureSpan">is.</span>gt
+            <span class="apidocSignatureSpan">(value, other)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.hash">
+            function <span class="apidocSignatureSpan">is.</span>hash
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.hex">
+            function <span class="apidocSignatureSpan">is.</span>hex
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.hosted">
+            function <span class="apidocSignatureSpan">is.</span>hosted
+            <span class="apidocSignatureSpan">(value, host)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.infinite">
+            function <span class="apidocSignatureSpan">is.</span>infinite
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.instance">
+            function <span class="apidocSignatureSpan">is.</span>instance
+            <span class="apidocSignatureSpan">(value, constructor)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.instanceof">
+            function <span class="apidocSignatureSpan">is.</span>instanceof
+            <span class="apidocSignatureSpan">(value, constructor)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.int">
+            function <span class="apidocSignatureSpan">is.</span>int
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.integer">
+            function <span class="apidocSignatureSpan">is.</span>integer
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.le">
+            function <span class="apidocSignatureSpan">is.</span>le
+            <span class="apidocSignatureSpan">(value, other)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.lt">
+            function <span class="apidocSignatureSpan">is.</span>lt
+            <span class="apidocSignatureSpan">(value, other)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.maximum">
+            function <span class="apidocSignatureSpan">is.</span>maximum
+            <span class="apidocSignatureSpan">(value, others)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.minimum">
+            function <span class="apidocSignatureSpan">is.</span>minimum
+            <span class="apidocSignatureSpan">(value, others)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.nan">
+            function <span class="apidocSignatureSpan">is.</span>nan
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.nil">
+            function <span class="apidocSignatureSpan">is.</span>nil
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.null">
+            function <span class="apidocSignatureSpan">is.</span>null
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.number">
+            function <span class="apidocSignatureSpan">is.</span>number
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.object">
+            function <span class="apidocSignatureSpan">is.</span>object
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.odd">
+            function <span class="apidocSignatureSpan">is.</span>odd
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.primitive">
+            function <span class="apidocSignatureSpan">is.</span>primitive
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.regexp">
+            function <span class="apidocSignatureSpan">is.</span>regexp
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.string">
+            function <span class="apidocSignatureSpan">is.</span>string
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.symbol">
+            function <span class="apidocSignatureSpan">is.</span>symbol
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.true">
+            function <span class="apidocSignatureSpan">is.</span>true
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.type">
+            function <span class="apidocSignatureSpan">is.</span>type
+            <span class="apidocSignatureSpan">(value, type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.undef">
+            function <span class="apidocSignatureSpan">is.</span>undef
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.undefined">
+            function <span class="apidocSignatureSpan">is.</span>undefined
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.within">
+            function <span class="apidocSignatureSpan">is.</span>within
+            <span class="apidocSignatureSpan">(value, start, finish)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.is.arguments">module is.arguments</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.arguments.empty">
+            function <span class="apidocSignatureSpan">is.arguments.</span>empty
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.is.array">module is.array</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.array.array">
+            function <span class="apidocSignatureSpan">is.</span>array
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.array.empty">
+            function <span class="apidocSignatureSpan">is.array.</span>empty
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.is.date">module is.date</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.date.date">
+            function <span class="apidocSignatureSpan">is.</span>date
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.is.date.valid">
+            function <span class="apidocSignatureSpan">is.date.</span>valid
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.is" id="apidoc.module.is">module is</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.is.a" id="apidoc.element.is.a">
+        function <span class="apidocSignatureSpan">is.</span>a
+        <span class="apidocSignatureSpan">(value, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">a = function (value, type) {
+  return typeof value === type;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.args" id="apidoc.element.is.args">
+        function <span class="apidocSignatureSpan">is.</span>args
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">args = function (value) {
+  var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+  var isOldArguments = !is.array(value) &#x26;&#x26; is.arraylike(value) &#x26;&#x26; is.object(value) &#x26;&#x26; is.fn(value.callee);
+  return isStandardArguments || isOldArguments;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Test if `value` is an empty arguments object.
+*
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is an empty arguments object, false otherwise
+* @api public
+*/
+is.args.empty = function (value) {
+ return is.<span class="apidocCodeKeywordSpan">args</span>(value) &#x26;&#x26; value.length === 0;
+};
+
+/**
+* is.array.empty
+* Test if `value` is an empty array.
+*
+* @param {Mixed} value value to test
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.arguments" id="apidoc.element.is.arguments">
+        function <span class="apidocSignatureSpan">is.</span>arguments
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">arguments = function (value) {
+  var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+  var isOldArguments = !is.array(value) &#x26;&#x26; is.arraylike(value) &#x26;&#x26; is.object(value) &#x26;&#x26; is.fn(value.callee);
+  return isStandardArguments || isOldArguments;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.array" id="apidoc.element.is.array">
+        function <span class="apidocSignatureSpan">is.</span>array
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isArray() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is an arguments object, false otherwise
+* @api public
+*/
+
+is.args = is.arguments = function (value) {
+ var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+ var isOldArguments = !is.<span class="apidocCodeKeywordSpan">array</span>(value) &#x26;&#x26; is.arraylike(value) &#x26;&#x26;
+is.object(value) &#x26;&#x26; is.fn(value.callee);
+ return isStandardArguments || isOldArguments;
+};
+
+/**
+* Test array.
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.arraylike" id="apidoc.element.is.arraylike">
+        function <span class="apidocSignatureSpan">is.</span>arraylike
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">arraylike = function (value) {
+  return !!value &#x26;&#x26; !is.bool(value)
+    &#x26;&#x26; owns.call(value, &#x27;length&#x27;)
+    &#x26;&#x26; isFinite(value.length)
+    &#x26;&#x26; is.number(value.length)
+    &#x26;&#x26; value.length &#x3e;= 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is an arguments object, false otherwise
+* @api public
+*/
+
+is.args = is.arguments = function (value) {
+ var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+ var isOldArguments = !is.array(value) &#x26;&#x26; is.<span class="apidocCodeKeywordSpan">arraylike</span>(value) &#x26;&#x26;
+is.object(value) &#x26;&#x26; is.fn(value.callee);
+ return isStandardArguments || isOldArguments;
+};
+
+/**
+* Test array.
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.base64" id="apidoc.element.is.base64">
+        function <span class="apidocSignatureSpan">is.</span>base64
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">base64 = function (value) {
+  return is.string(value) &#x26;&#x26; (!value.length || base64Regex.test(value));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.bool" id="apidoc.element.is.bool">
+        function <span class="apidocSignatureSpan">is.</span>bool
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">bool = function (value) {
+  return toStr.call(value) === &#x27;[object Boolean]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {Mixed} value value to test
+ * @return {Boolean} true if `value` is an arguments object, false otherwise
+ * @api public
+ */
+
+is.arraylike = function (value) {
+  return !!value &#x26;&#x26; !is.<span class="apidocCodeKeywordSpan">bool</span>(value)
+    &#x26;&#x26; owns.call(value, &#x27;length&#x27;)
+    &#x26;&#x26; isFinite(value.length)
+    &#x26;&#x26; is.number(value.length)
+    &#x26;&#x26; value.length &#x3e;= 0;
+};
+
+/**
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.boolean" id="apidoc.element.is.boolean">
+        function <span class="apidocSignatureSpan">is.</span>boolean
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">boolean = function (value) {
+  return toStr.call(value) === &#x27;[object Boolean]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.date" id="apidoc.element.is.date">
+        function <span class="apidocSignatureSpan">is.</span>date
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (value) {
+  return toStr.call(value) === &#x27;[object Date]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * is.date.valid
+ * Test if `value` is a valid date.
+ *
+ * @param {Mixed} value value to test
+ * @returns {Boolean} true if `value` is a valid date, false otherwise
+ */
+is.date.valid = function (value) {
+  return is.<span class="apidocCodeKeywordSpan">date</span>(value) &#x26;&#x26; !isNaN(Number(value));
+};
+
+/**
+ * Test element.
+ */
+
+/**
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.decimal" id="apidoc.element.is.decimal">
+        function <span class="apidocSignatureSpan">is.</span>decimal
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">decimal = function (value) {
+  return is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; !is.infinite(value) &#x26;&#x26; value % 1 !== 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.defined" id="apidoc.element.is.defined">
+        function <span class="apidocSignatureSpan">is.</span>defined
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defined = function (value) {
+  return typeof value !== &#x27;undefined&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.divisibleBy" id="apidoc.element.is.divisibleBy">
+        function <span class="apidocSignatureSpan">is.</span>divisibleBy
+        <span class="apidocSignatureSpan">(value, n)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">divisibleBy = function (value, n) {
+  var isDividendInfinite = is.infinite(value);
+  var isDivisorInfinite = is.infinite(n);
+  var isNonZeroNumber = is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; is.number(n) &#x26;&#x26; !isActualNaN(n) &#x26;&#x26; n !== 0;
+  return isDividendInfinite || isDivisorInfinite || (isNonZeroNumber &#x26;&#x26; value % n === 0);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.element" id="apidoc.element.is.element">
+        function <span class="apidocSignatureSpan">is.</span>element
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">element = function (value) {
+  return value !== undefined
+    &#x26;&#x26; typeof HTMLElement !== &#x27;undefined&#x27;
+    &#x26;&#x26; value instanceof HTMLElement
+    &#x26;&#x26; value.nodeType === 1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.empty" id="apidoc.element.is.empty">
+        function <span class="apidocSignatureSpan">is.</span>empty
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">empty = function (value) {
+  var type = toStr.call(value);
+  var key;
+
+  if (type === &#x27;[object Array]&#x27; || type === &#x27;[object Arguments]&#x27; || type === &#x27;[object String]&#x27;) {
+    return value.length === 0;
+  }
+
+  if (type === &#x27;[object Object]&#x27;) {
+    for (key in value) {
+      if (owns.call(value, key)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  return !value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.equal" id="apidoc.element.is.equal">
+        function <span class="apidocSignatureSpan">is.</span>equal
+        <span class="apidocSignatureSpan">(value, other)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function equal(value, other) {
+  if (value === other) {
+    return true;
+  }
+
+  var type = toStr.call(value);
+  var key;
+
+  if (type !== toStr.call(other)) {
+    return false;
+  }
+
+  if (type === &#x27;[object Object]&#x27;) {
+    for (key in value) {
+      if (!is.equal(value[key], other[key]) || !(key in other)) {
+        return false;
+      }
+    }
+    for (key in other) {
+      if (!is.equal(value[key], other[key]) || !(key in value)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (type === &#x27;[object Array]&#x27;) {
+    key = value.length;
+    if (key !== other.length) {
+      return false;
+    }
+    while (key--) {
+      if (!is.equal(value[key], other[key])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (type === &#x27;[object Function]&#x27;) {
+    return value.prototype === other.prototype;
+  }
+
+  if (type === &#x27;[object Date]&#x27;) {
+    return value.getTime() === other.getTime();
+  }
+
+  return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (type !== toStr.call(other)) {
+  return false;
+}
+
+if (type === &#x27;[object Object]&#x27;) {
+  for (key in value) {
+    if (!is.<span class="apidocCodeKeywordSpan">equal</span>(value[key], other[key]) || !(key in other)) {
+      return false;
+    }
+  }
+  for (key in other) {
+    if (!is.equal(value[key], other[key]) || !(key in value)) {
+      return false;
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.error" id="apidoc.element.is.error">
+        function <span class="apidocSignatureSpan">is.</span>error
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (value) {
+  return toStr.call(value) === &#x27;[object Error]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.even" id="apidoc.element.is.even">
+        function <span class="apidocSignatureSpan">is.</span>even
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">even = function (value) {
+  return is.infinite(value) || (is.number(value) &#x26;&#x26; value === value &#x26;&#x26; value % 2 === 0);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.false" id="apidoc.element.is.false">
+        function <span class="apidocSignatureSpan">is.</span>false
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">false = function (value) {
+  return is.bool(value) &#x26;&#x26; Boolean(Number(value)) === false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.fn" id="apidoc.element.is.fn">
+        function <span class="apidocSignatureSpan">is.</span>fn
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fn = function (value) {
+  var isAlert = typeof window !== &#x27;undefined&#x27; &#x26;&#x26; value === window.alert;
+  if (isAlert) {
+    return true;
+  }
+  var str = toStr.call(value);
+  return str === &#x27;[object Function]&#x27; || str === &#x27;[object GeneratorFunction]&#x27; || str === &#x27;[object AsyncFunction]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is an arguments object, false otherwise
+* @api public
+*/
+
+is.args = is.arguments = function (value) {
+ var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+ var isOldArguments = !is.array(value) &#x26;&#x26; is.arraylike(value) &#x26;&#x26; is.object(value) &#x26;&#x26; is.<span class
+="apidocCodeKeywordSpan">fn</span>(value.callee);
+ return isStandardArguments || isOldArguments;
+};
+
+/**
+* Test array.
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.function" id="apidoc.element.is.function">
+        function <span class="apidocSignatureSpan">is.</span>function
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function = function (value) {
+  var isAlert = typeof window !== &#x27;undefined&#x27; &#x26;&#x26; value === window.alert;
+  if (isAlert) {
+    return true;
+  }
+  var str = toStr.call(value);
+  return str === &#x27;[object Function]&#x27; || str === &#x27;[object GeneratorFunction]&#x27; || str === &#x27;[object AsyncFunction]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.ge" id="apidoc.element.is.ge">
+        function <span class="apidocSignatureSpan">is.</span>ge
+        <span class="apidocSignatureSpan">(value, other)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ge = function (value, other) {
+  if (isActualNaN(value) || isActualNaN(other)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  }
+  return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3e;= other;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.gt" id="apidoc.element.is.gt">
+        function <span class="apidocSignatureSpan">is.</span>gt
+        <span class="apidocSignatureSpan">(value, other)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">gt = function (value, other) {
+  if (isActualNaN(value) || isActualNaN(other)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  }
+  return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3e; other;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.hash" id="apidoc.element.is.hash">
+        function <span class="apidocSignatureSpan">is.</span>hash
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash = function (value) {
+  return is.object(value) &#x26;&#x26; value.constructor === Object &#x26;&#x26; !value.nodeType &#x26;&#x26; !value.setInterval;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.hex" id="apidoc.element.is.hex">
+        function <span class="apidocSignatureSpan">is.</span>hex
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hex = function (value) {
+  return is.string(value) &#x26;&#x26; (!value.length || hexRegex.test(value));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.hosted" id="apidoc.element.is.hosted">
+        function <span class="apidocSignatureSpan">is.</span>hosted
+        <span class="apidocSignatureSpan">(value, host)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hosted = function (value, host) {
+  var type = typeof host[value];
+  return type === &#x27;object&#x27; ? !!host[value] : !NON_HOST_TYPES[type];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.infinite" id="apidoc.element.is.infinite">
+        function <span class="apidocSignatureSpan">is.</span>infinite
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">infinite = function (value) {
+  return value === Infinity || value === -Infinity;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is a decimal number, false otherwise
+* @api public
+*/
+
+is.decimal = function (value) {
+ return is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; !is.<span class="apidocCodeKeywordSpan">infinite</span>(value
+) &#x26;&#x26; value % 1 !== 0;
+};
+
+/**
+* is.divisibleBy
+* Test if `value` is divisible by `n`.
+*
+* @param {Number} value value to test
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.instance" id="apidoc.element.is.instance">
+        function <span class="apidocSignatureSpan">is.</span>instance
+        <span class="apidocSignatureSpan">(value, constructor)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">instance = function (value, constructor) {
+  return value instanceof constructor;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.instanceof" id="apidoc.element.is.instanceof">
+        function <span class="apidocSignatureSpan">is.</span>instanceof
+        <span class="apidocSignatureSpan">(value, constructor)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">instanceof = function (value, constructor) {
+  return value instanceof constructor;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.int" id="apidoc.element.is.int">
+        function <span class="apidocSignatureSpan">is.</span>int
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">int = function (value) {
+  return is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; value % 1 === 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.integer" id="apidoc.element.is.integer">
+        function <span class="apidocSignatureSpan">is.</span>integer
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">integer = function (value) {
+  return is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; value % 1 === 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.le" id="apidoc.element.is.le">
+        function <span class="apidocSignatureSpan">is.</span>le
+        <span class="apidocSignatureSpan">(value, other)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">le = function (value, other) {
+  if (isActualNaN(value) || isActualNaN(other)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  }
+  return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3c;= other;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.lt" id="apidoc.element.is.lt">
+        function <span class="apidocSignatureSpan">is.</span>lt
+        <span class="apidocSignatureSpan">(value, other)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lt = function (value, other) {
+  if (isActualNaN(value) || isActualNaN(other)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  }
+  return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3c; other;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.maximum" id="apidoc.element.is.maximum">
+        function <span class="apidocSignatureSpan">is.</span>maximum
+        <span class="apidocSignatureSpan">(value, others)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">maximum = function (value, others) {
+  if (isActualNaN(value)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  } else if (!is.arraylike(others)) {
+    throw new TypeError(&#x27;second argument must be array-like&#x27;);
+  }
+  var len = others.length;
+
+  while (--len &#x3e;= 0) {
+    if (value &#x3c; others[len]) {
+      return false;
+    }
+  }
+
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.minimum" id="apidoc.element.is.minimum">
+        function <span class="apidocSignatureSpan">is.</span>minimum
+        <span class="apidocSignatureSpan">(value, others)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">minimum = function (value, others) {
+  if (isActualNaN(value)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  } else if (!is.arraylike(others)) {
+    throw new TypeError(&#x27;second argument must be array-like&#x27;);
+  }
+  var len = others.length;
+
+  while (--len &#x3e;= 0) {
+    if (value &#x3e; others[len]) {
+      return false;
+    }
+  }
+
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.nan" id="apidoc.element.is.nan">
+        function <span class="apidocSignatureSpan">is.</span>nan
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nan = function (value) {
+  return !is.number(value) || value !== value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.nil" id="apidoc.element.is.nil">
+        function <span class="apidocSignatureSpan">is.</span>nil
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nil = function (value) {
+  return value === null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.null" id="apidoc.element.is.null">
+        function <span class="apidocSignatureSpan">is.</span>null
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">null = function (value) {
+  return value === null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.number" id="apidoc.element.is.number">
+        function <span class="apidocSignatureSpan">is.</span>number
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">number = function (value) {
+  return toStr.call(value) === &#x27;[object Number]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @api public
+*/
+
+is.arraylike = function (value) {
+ return !!value &#x26;&#x26; !is.bool(value)
+   &#x26;&#x26; owns.call(value, &#x27;length&#x27;)
+   &#x26;&#x26; isFinite(value.length)
+   &#x26;&#x26; is.<span class="apidocCodeKeywordSpan">number</span>(value.length)
+   &#x26;&#x26; value.length &#x3e;= 0;
+};
+
+/**
+* Test boolean.
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.object" id="apidoc.element.is.object">
+        function <span class="apidocSignatureSpan">is.</span>object
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">object = function (value) {
+  return toStr.call(value) === &#x27;[object Object]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is an arguments object, false otherwise
+* @api public
+*/
+
+is.args = is.arguments = function (value) {
+ var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+ var isOldArguments = !is.array(value) &#x26;&#x26; is.arraylike(value) &#x26;&#x26; is.<span class="apidocCodeKeywordSpan">object
+</span>(value) &#x26;&#x26; is.fn(value.callee);
+ return isStandardArguments || isOldArguments;
+};
+
+/**
+* Test array.
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.odd" id="apidoc.element.is.odd">
+        function <span class="apidocSignatureSpan">is.</span>odd
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">odd = function (value) {
+  return is.infinite(value) || (is.number(value) &#x26;&#x26; value === value &#x26;&#x26; value % 2 !== 0);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.primitive" id="apidoc.element.is.primitive">
+        function <span class="apidocSignatureSpan">is.</span>primitive
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isPrimitive(value) {
+  if (!value) {
+    return true;
+  }
+  if (typeof value === &#x27;object&#x27; || is.object(value) || is.fn(value) || is.array(value)) {
+    return false;
+  }
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.regexp" id="apidoc.element.is.regexp">
+        function <span class="apidocSignatureSpan">is.</span>regexp
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">regexp = function (value) {
+  return toStr.call(value) === &#x27;[object RegExp]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.string" id="apidoc.element.is.string">
+        function <span class="apidocSignatureSpan">is.</span>string
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">string = function (value) {
+  return toStr.call(value) === &#x27;[object String]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {Mixed} value value to test
+ * @return {Boolean} true if &#x27;value&#x27; is a base64 encoded string, false otherwise
+ * @api public
+ */
+
+is.base64 = function (value) {
+  return is.<span class="apidocCodeKeywordSpan">string</span>(value) &#x26;&#x26; (!value.length || base64Regex.test(value));
+};
+
+/**
+ * Test base64 string.
+ */
+
+/**
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.symbol" id="apidoc.element.is.symbol">
+        function <span class="apidocSignatureSpan">is.</span>symbol
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">symbol = function (value) {
+  return typeof Symbol === &#x27;function&#x27; &#x26;&#x26; toStr.call(value) === &#x27;[object Symbol]&#x27; &#x26;&#x26; typeof symbolValueOf.call(value) === &#x27;symbol
+&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.true" id="apidoc.element.is.true">
+        function <span class="apidocSignatureSpan">is.</span>true
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">true = function (value) {
+  return is.bool(value) &#x26;&#x26; Boolean(Number(value)) === true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.type" id="apidoc.element.is.type">
+        function <span class="apidocSignatureSpan">is.</span>type
+        <span class="apidocSignatureSpan">(value, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">type = function (value, type) {
+  return typeof value === type;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.undef" id="apidoc.element.is.undef">
+        function <span class="apidocSignatureSpan">is.</span>undef
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">undef = function (value) {
+  return typeof value === &#x27;undefined&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.undefined" id="apidoc.element.is.undefined">
+        function <span class="apidocSignatureSpan">is.</span>undefined
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">undefined = function (value) {
+  return typeof value === &#x27;undefined&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.within" id="apidoc.element.is.within">
+        function <span class="apidocSignatureSpan">is.</span>within
+        <span class="apidocSignatureSpan">(value, start, finish)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">within = function (value, start, finish) {
+  if (isActualNaN(value) || isActualNaN(start) || isActualNaN(finish)) {
+    throw new TypeError(&#x27;NaN is not a valid value&#x27;);
+  } else if (!is.number(value) || !is.number(start) || !is.number(finish)) {
+    throw new TypeError(&#x27;all arguments must be numbers&#x27;);
+  }
+  var isAnyInfinite = is.infinite(value) || is.infinite(start) || is.infinite(finish);
+  return isAnyInfinite || (value &#x3e;= start &#x26;&#x26; value &#x3c;= finish);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.is.arguments" id="apidoc.module.is.arguments">module is.arguments</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.is.arguments.empty" id="apidoc.element.is.arguments.empty">
+        function <span class="apidocSignatureSpan">is.arguments.</span>empty
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">empty = function (value) {
+  return is.args(value) &#x26;&#x26; value.length === 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.is.array" id="apidoc.module.is.array">module is.array</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.is.array.array" id="apidoc.element.is.array.array">
+        function <span class="apidocSignatureSpan">is.</span>array
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isArray() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @param {Mixed} value value to test
+* @return {Boolean} true if `value` is an arguments object, false otherwise
+* @api public
+*/
+
+is.args = is.arguments = function (value) {
+ var isStandardArguments = toStr.call(value) === &#x27;[object Arguments]&#x27;;
+ var isOldArguments = !is.<span class="apidocCodeKeywordSpan">array</span>(value) &#x26;&#x26; is.arraylike(value) &#x26;&#x26;
+is.object(value) &#x26;&#x26; is.fn(value.callee);
+ return isStandardArguments || isOldArguments;
+};
+
+/**
+* Test array.
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.array.empty" id="apidoc.element.is.array.empty">
+        function <span class="apidocSignatureSpan">is.array.</span>empty
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">empty = function (value) {
+  return is.array(value) &#x26;&#x26; value.length === 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.is.date" id="apidoc.module.is.date">module is.date</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.is.date.date" id="apidoc.element.is.date.date">
+        function <span class="apidocSignatureSpan">is.</span>date
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (value) {
+  return toStr.call(value) === &#x27;[object Date]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * is.date.valid
+ * Test if `value` is a valid date.
+ *
+ * @param {Mixed} value value to test
+ * @returns {Boolean} true if `value` is a valid date, false otherwise
+ */
+is.date.valid = function (value) {
+  return is.<span class="apidocCodeKeywordSpan">date</span>(value) &#x26;&#x26; !isNaN(Number(value));
+};
+
+/**
+ * Test element.
+ */
+
+/**
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.is.date.valid" id="apidoc.element.is.date.valid">
+        function <span class="apidocSignatureSpan">is.date.</span>valid
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">valid = function (value) {
+  return is.date(value) &#x26;&#x26; !isNaN(Number(value));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
