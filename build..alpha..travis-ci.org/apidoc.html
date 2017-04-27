@@ -706,7 +706,23 @@ is.object(value) &#x26;&#x26; is.fn(value.callee);
     <li>description and source-code<pre class="apidocCodePre">base64 = function (value) {
   return is.string(value) &#x26;&#x26; (!value.length || base64Regex.test(value));
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var F = function () {};
+  F.prototype = Object(&#x27;&#x27;);
+  t.notOk(is.string(F), &#x27;string subtype is not string&#x27;);
+  t.end();
+});
+
+test(&#x27;is.base64&#x27;, function (t) {
+  t.ok(is.<span class="apidocCodeKeywordSpan">base64</span>(&#x27;wxyzWXYZ/+==&#x27;), &#x27;string is base64 encoded&#x27;);
+  t.ok(is.base64(&#x27;&#x27;), &#x27;zero length string is base64 encoded&#x27;);
+  t.notOk(is.base64(&#x27;wxyzWXYZ123/+==&#x27;), &#x27;string length not a multiple of four is not base64 encoded&#x27;);
+  t.notOk(is.base64(&#x27;wxyzWXYZ1234|]==&#x27;), &#x27;string with invalid characters is not base64 encoded&#x27;);
+  t.notOk(is.base64(&#x27;wxyzWXYZ1234==/+&#x27;), &#x27;string with = not at end is not base64 encoded&#x27;);
+  t.notOk(is.base64(&#x27;wxyzWXYZ1234/===&#x27;), &#x27;string ending with === is not base64 encoded&#x27;);
+  t.end();
+});
+...</pre></li>
     </ul>
 
 
@@ -798,7 +814,24 @@ is.date.valid = function (value) {
     <li>description and source-code<pre class="apidocCodePre">decimal = function (value) {
   return is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; !is.infinite(value) &#x26;&#x26; value % 1 !== 0;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  * Optimizing is.equal to return early if value and other are strictly equal.
+  * Fixing is.equal for objects.
+  * Test improvements
+
+0.2.7 / 2013-12-26
+==================
+  * Update `tape`, `foreach`
+  * is.<span class="apidocCodeKeywordSpan">decimal</span>(Infinity) shouldn&#x27;t be true [#11](https://github.com/enricomarino
+/is/issues/11)
+
+0.2.6 / 2013-05-06
+==================
+  * Fix lots of tests [#9](https://github.com/enricomarino/is/issues/9)
+  * Update tape [#8](https://github.com/enricomarino/is/issues/8)
+
+0.2.5 / 2013-04-24
+...</pre></li>
     </ul>
 
 
@@ -813,7 +846,23 @@ is.date.valid = function (value) {
     <li>description and source-code<pre class="apidocCodePre">defined = function (value) {
   return typeof value !== &#x27;undefined&#x27;;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.ok(is.undef(undefined), &#x27;literal undefined is undefined&#x27;);
+t.notOk(is.undef(null), &#x27;null is not undefined&#x27;);
+t.notOk(is.undef({}), &#x27;object is not undefined&#x27;);
+t.end();
+});
+
+test(&#x27;is.defined&#x27;, function (t) {
+t.notOk(is.<span class="apidocCodeKeywordSpan">defined</span>(), &#x27;undefined is not defined&#x27;);
+t.ok(is.defined(null), &#x27;null is defined&#x27;);
+t.ok(is.defined({}), &#x27;object is defined&#x27;);
+t.end();
+});
+
+test(&#x27;is.empty&#x27;, function (t) {
+t.ok(is.empty(&#x27;&#x27;), &#x27;empty string is empty&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -831,7 +880,23 @@ is.date.valid = function (value) {
   var isNonZeroNumber = is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; is.number(n) &#x26;&#x26; !isActualNaN(n) &#x26;&#x26; n !== 0;
   return isDividendInfinite || isDivisorInfinite || (isNonZeroNumber &#x26;&#x26; value % n === 0);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.decimal(1), &#x27;integer is not decimal&#x27;);
+t.notOk(is.decimal(NaN), &#x27;NaN is not decimal&#x27;);
+t.notOk(is.decimal(Infinity), &#x27;Infinity is not decimal&#x27;);
+t.end();
+});
+
+test(&#x27;is.divisibleBy&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">divisibleBy</span>(4, 2), &#x27;4 is divisible by 2&#x27;);
+t.ok(is.divisibleBy(4, 2), &#x27;4 is divisible by 2&#x27;);
+t.ok(is.divisibleBy(0, 1), &#x27;0 is divisible by 1&#x27;);
+t.ok(is.divisibleBy(Infinity, 1), &#x27;infinity is divisible by anything&#x27;);
+t.ok(is.divisibleBy(1, Infinity), &#x27;anything is divisible by infinity&#x27;);
+t.ok(is.divisibleBy(Infinity, Infinity), &#x27;infinity is divisible by infinity&#x27;);
+t.notOk(is.divisibleBy(1, 0), &#x27;1 is not divisible by 0&#x27;);
+t.notOk(is.divisibleBy(NaN, 1), &#x27;NaN is not divisible by 1&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -849,7 +914,23 @@ is.date.valid = function (value) {
     &#x26;&#x26; value instanceof HTMLElement
     &#x26;&#x26; value.nodeType === 1;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+test(&#x27;is.date.valid&#x27;, function (t) {
+t.ok(is.date.valid(new Date()), &#x27;new Date() is a valid date&#x27;);
+t.notOk(is.date.valid(new Date(&#x27;&#x27;)), &#x27;new Date(&#x22;&#x22;) is not a valid date&#x27;);
+t.end();
+});
+
+test(&#x27;is.element&#x27;, function (t) {
+t.notOk(is.<span class="apidocCodeKeywordSpan">element</span>(), &#x27;undefined is not element&#x27;);
+
+t.test(&#x27;when HTMLElement exists&#x27;, { skip: typeof HTMLElement === &#x27;undefined&#x27; }, function (st) {
+  var element = document.createElement(&#x27;div&#x27;);
+  st.ok(is.element(element), &#x27;HTMLElement is element&#x27;);
+  st.notOk(is.element({ nodeType: 1 }), &#x27;object with nodeType is not element&#x27;);
+  st.end();
+});
+...</pre></li>
     </ul>
 
 
@@ -880,7 +961,23 @@ is.date.valid = function (value) {
 
   return !value;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Add license and downloads badges
+* Update `jscs`
+
+2.0.0 / 2014-08-25
+==================
+* Add `make release`
+* Update copyright notice.
+* Fix is.<span class="apidocCodeKeywordSpan">empty</span>(new String())
+
+1.1.0 / 2014-08-22
+==================
+* Removing redundant license
+* Add a non-deprecated method for is.null
+* Use a more reliable valueOf coercion for is.false/is.true
+* Clean up `README.md`
+...</pre></li>
     </ul>
 
 
@@ -972,7 +1069,23 @@ if (type === &#x27;[object Object]&#x27;) {
     <li>description and source-code<pre class="apidocCodePre">error = function (value) {
   return toStr.call(value) === &#x27;[object Error]&#x27;;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+});
+
+t.end();
+});
+
+test(&#x27;is.error&#x27;, function (t) {
+var err = new Error(&#x27;foo&#x27;);
+t.ok(is.<span class="apidocCodeKeywordSpan">error</span>(err), &#x27;Error is error&#x27;);
+t.notOk(is.error({}), &#x27;object is not error&#x27;);
+var objWithErrorToString = {
+  toString: function () {
+    return &#x27;[object Error]&#x27;;
+  }
+};
+t.equal(String(objWithErrorToString), toStr.call(new Error()), &#x27;obj has Error\&#x27;s toString&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -987,7 +1100,23 @@ if (type === &#x27;[object Object]&#x27;) {
     <li>description and source-code<pre class="apidocCodePre">even = function (value) {
   return is.infinite(value) || (is.number(value) &#x26;&#x26; value === value &#x26;&#x26; value % 2 === 0);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.nan(3), &#x27;three is a number&#x27;);
+t.notOk(is.nan(1.1), &#x27;1.1 is a number&#x27;);
+t.notOk(is.nan(Infinity), &#x27;infinity is a number&#x27;);
+t.end();
+});
+
+test(&#x27;is.even&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">even</span>(0), &#x27;zero is even&#x27;);
+t.ok(is.even(2), &#x27;two is even&#x27;);
+t.ok(is.even(Infinity), &#x27;infinity is even&#x27;);
+t.notOk(is.even(1), &#x27;1 is not even&#x27;);
+t.notOk(is.even(), &#x27;undefined is not even&#x27;);
+t.notOk(is.even(null), &#x27;null is not even&#x27;);
+t.notOk(is.even(NaN), &#x27;NaN is not even&#x27;);
+t.end();
+...</pre></li>
     </ul>
 
 
@@ -1076,7 +1205,23 @@ is.args = is.arguments = function (value) {
   }
   return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3e;= other;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.odd(), &#x27;undefined is not odd&#x27;);
+t.notOk(is.odd(null), &#x27;null is not odd&#x27;);
+t.notOk(is.odd(NaN), &#x27;NaN is not odd&#x27;);
+t.end();
+});
+
+test(&#x27;is.ge&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">ge</span>(3, 2), &#x27;3 is greater than 2&#x27;);
+t.notOk(is.ge(2, 3), &#x27;2 is not greater than 3&#x27;);
+t.ok(is.ge(3, 3), &#x27;3 is greater than or equal to 3&#x27;);
+t.ok(is.ge(&#x27;abc&#x27;, &#x27;a&#x27;), &#x27;abc is greater than a&#x27;);
+t.ok(is.ge(&#x27;abc&#x27;, &#x27;abc&#x27;), &#x27;abc is greater than or equal to abc&#x27;);
+t.notOk(is.ge(&#x27;a&#x27;, &#x27;abc&#x27;), &#x27;a is not greater than abc&#x27;);
+t.notOk(is.ge(Infinity, 0), &#x27;infinity is not greater than anything&#x27;);
+t.notOk(is.ge(0, Infinity), &#x27;anything is not greater than infinity&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1094,7 +1239,23 @@ is.args = is.arguments = function (value) {
   }
   return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3e; other;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var error = new TypeError(&#x27;NaN is not a valid value&#x27;);
+t[&#x27;throws&#x27;](function () { return is.ge(NaN, 2); }, error, &#x27;throws when first value is NaN&#x27;);
+t[&#x27;throws&#x27;](function () { return is.ge(2, NaN); }, error, &#x27;throws when second value is NaN&#x27;);
+t.end();
+});
+
+test(&#x27;is.gt&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">gt</span>(3, 2), &#x27;3 is greater than 2&#x27;);
+t.notOk(is.gt(2, 3), &#x27;2 is not greater than 3&#x27;);
+t.notOk(is.gt(3, 3), &#x27;3 is not greater than 3&#x27;);
+t.ok(is.gt(&#x27;abc&#x27;, &#x27;a&#x27;), &#x27;abc is greater than a&#x27;);
+t.notOk(is.gt(&#x27;abc&#x27;, &#x27;abc&#x27;), &#x27;abc is not greater than abc&#x27;);
+t.notOk(is.gt(&#x27;a&#x27;, &#x27;abc&#x27;), &#x27;a is not greater than abc&#x27;);
+t.notOk(is.gt(Infinity, 0), &#x27;infinity is not greater than anything&#x27;);
+t.notOk(is.gt(0, Infinity), &#x27;anything is not greater than infinity&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1109,7 +1270,23 @@ is.args = is.arguments = function (value) {
     <li>description and source-code<pre class="apidocCodePre">hash = function (value) {
   return is.object(value) &#x26;&#x26; value.constructor === Object &#x26;&#x26; !value.nodeType &#x26;&#x26; !value.setInterval;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  st.end();
+});
+
+t.end();
+});
+
+test(&#x27;is.hash&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">hash</span>({}), &#x27;empty object literal is hash&#x27;);
+t.ok(is.hash({ 1: 2, a: &#x27;b&#x27; }), &#x27;object literal is hash&#x27;);
+t.notOk(is.hash(), &#x27;undefined is not a hash&#x27;);
+t.notOk(is.hash(null), &#x27;null is not a hash&#x27;);
+t.notOk(is.hash(new Date()), &#x27;date is not a hash&#x27;);
+t.notOk(is.hash(Object(&#x27;&#x27;)), &#x27;string object is not a hash&#x27;);
+t.notOk(is.hash(&#x27;&#x27;), &#x27;string literal is not a hash&#x27;);
+t.notOk(is.hash(Object(0)), &#x27;number object is not a hash&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1124,7 +1301,23 @@ is.args = is.arguments = function (value) {
     <li>description and source-code<pre class="apidocCodePre">hex = function (value) {
   return is.string(value) &#x26;&#x26; (!value.length || hexRegex.test(value));
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.base64(&#x27;wxyzWXYZ1234|]==&#x27;), &#x27;string with invalid characters is not base64 encoded&#x27;);
+t.notOk(is.base64(&#x27;wxyzWXYZ1234==/+&#x27;), &#x27;string with = not at end is not base64 encoded&#x27;);
+t.notOk(is.base64(&#x27;wxyzWXYZ1234/===&#x27;), &#x27;string ending with === is not base64 encoded&#x27;);
+t.end();
+});
+
+test(&#x27;is.hex&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">hex</span>(&#x27;abcdABCD1234&#x27;), &#x27;string is hex encoded&#x27;);
+t.ok(is.hex(&#x27;&#x27;), &#x27;zero length string is hex encoded&#x27;);
+t.notOk(is.hex(&#x27;wxyzWXYZ1234/+==&#x27;), &#x27;string with invalid characters is not hex encoded&#x27;);
+t.end();
+});
+
+test(&#x27;is.symbol&#x27;, function (t) {
+t.test(&#x27;not symbols&#x27;, function (st) {
+...</pre></li>
     </ul>
 
 
@@ -1140,7 +1333,23 @@ is.args = is.arguments = function (value) {
   var type = typeof host[value];
   return type === &#x27;object&#x27; ? !!host[value] : !NON_HOST_TYPES[type];
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  ft.end();
+});
+
+t.end();
+});
+
+test(&#x27;is.hosted&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">hosted</span>(&#x27;a&#x27;, { a: {} }), &#x27;object is hosted&#x27;);
+t.ok(is.hosted(&#x27;a&#x27;, { a: [] }), &#x27;array is hosted&#x27;);
+t.ok(is.hosted(&#x27;a&#x27;, { a: function () {} }), &#x27;function is hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: true }), &#x27;boolean value is not hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: false }), &#x27;boolean value is not hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: 3 }), &#x27;number value is not hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: undefined }), &#x27;undefined value is not hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: &#x27;abc&#x27; }), &#x27;string value is not hosted&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1187,7 +1396,23 @@ is.decimal = function (value) {
     <li>description and source-code<pre class="apidocCodePre">instance = function (value, constructor) {
   return value instanceof constructor;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.hosted(&#x27;a&#x27;, { a: undefined }), &#x27;undefined value is not hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: &#x27;abc&#x27; }), &#x27;string value is not hosted&#x27;);
+t.notOk(is.hosted(&#x27;a&#x27;, { a: null }), &#x27;null value is not hosted&#x27;);
+t.end();
+});
+
+test(&#x27;is.instance&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">instance</span>(new Date(), Date), &#x27;new Date is instanceof Date&#x27;);
+var F = function () {};
+t.ok(is.instance(new F(), F), &#x27;new constructor is instanceof constructor&#x27;);
+t.end();
+});
+
+test(&#x27;is.nil&#x27;, function (t) {
+var isNull = is.nil;
+...</pre></li>
     </ul>
 
 
@@ -1232,7 +1457,23 @@ is.decimal = function (value) {
     <li>description and source-code<pre class="apidocCodePre">integer = function (value) {
   return is.number(value) &#x26;&#x26; !isActualNaN(value) &#x26;&#x26; value % 1 === 0;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.divisibleBy(1, NaN), &#x27;1 is not divisible by NaN&#x27;);
+t.notOk(is.divisibleBy(NaN, NaN), &#x27;NaN is not divisible by NaN&#x27;);
+t.notOk(is.divisibleBy(1, 3), &#x27;1 is not divisible by 3&#x27;);
+t.end();
+});
+
+test(&#x27;is.integer&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">integer</span>(0), &#x27;0 is integer&#x27;);
+t.ok(is.integer(3), &#x27;3 is integer&#x27;);
+t.notOk(is.integer(1.1), &#x27;1.1 is not integer&#x27;);
+t.notOk(is.integer(NaN), &#x27;NaN is not integer&#x27;);
+t.notOk(is.integer(Infinity), &#x27;infinity is not integer&#x27;);
+t.notOk(is.integer(null), &#x27;null is not integer&#x27;);
+t.notOk(is.integer(), &#x27;undefined is not integer&#x27;);
+t.end();
+...</pre></li>
     </ul>
 
 
@@ -1250,7 +1491,23 @@ is.decimal = function (value) {
   }
   return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3c;= other;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var error = new TypeError(&#x27;NaN is not a valid value&#x27;);
+t[&#x27;throws&#x27;](function () { return is.gt(NaN, 2); }, error, &#x27;throws when first value is NaN&#x27;);
+t[&#x27;throws&#x27;](function () { return is.gt(2, NaN); }, error, &#x27;throws when second value is NaN&#x27;);
+t.end();
+});
+
+test(&#x27;is.le&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">le</span>(2, 3), &#x27;2 is lesser than or equal to 3&#x27;);
+t.notOk(is.le(3, 2), &#x27;3 is not lesser than or equal to 2&#x27;);
+t.ok(is.le(3, 3), &#x27;3 is lesser than or equal to 3&#x27;);
+t.ok(is.le(&#x27;a&#x27;, &#x27;abc&#x27;), &#x27;a is lesser than or equal to abc&#x27;);
+t.ok(is.le(&#x27;abc&#x27;, &#x27;abc&#x27;), &#x27;abc is lesser than or equal to abc&#x27;);
+t.notOk(is.le(&#x27;abc&#x27;, &#x27;a&#x27;), &#x27;abc is not lesser than or equal to a&#x27;);
+t.notOk(is.le(Infinity, 0), &#x27;infinity is not lesser than or equal to anything&#x27;);
+t.notOk(is.le(0, Infinity), &#x27;anything is not lesser than or equal to infinity&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1268,7 +1525,23 @@ is.decimal = function (value) {
   }
   return !is.infinite(value) &#x26;&#x26; !is.infinite(other) &#x26;&#x26; value &#x3c; other;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var error = new TypeError(&#x27;NaN is not a valid value&#x27;);
+t[&#x27;throws&#x27;](function () { return is.le(NaN, 2); }, error, &#x27;throws when first value is NaN&#x27;);
+t[&#x27;throws&#x27;](function () { return is.le(2, NaN); }, error, &#x27;throws when second value is NaN&#x27;);
+t.end();
+});
+
+test(&#x27;is.lt&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">lt</span>(2, 3), &#x27;2 is lesser than 3&#x27;);
+t.notOk(is.lt(3, 2), &#x27;3 is not lesser than 2&#x27;);
+t.notOk(is.lt(3, 3), &#x27;3 is not lesser than 3&#x27;);
+t.ok(is.lt(&#x27;a&#x27;, &#x27;abc&#x27;), &#x27;a is lesser than abc&#x27;);
+t.notOk(is.lt(&#x27;abc&#x27;, &#x27;abc&#x27;), &#x27;abc is not lesser than abc&#x27;);
+t.notOk(is.lt(&#x27;abc&#x27;, &#x27;a&#x27;), &#x27;abc is not lesser than a&#x27;);
+t.notOk(is.lt(Infinity, 0), &#x27;infinity is not lesser than anything&#x27;);
+t.notOk(is.lt(0, Infinity), &#x27;anything is not lesser than infinity&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1296,7 +1569,23 @@ is.decimal = function (value) {
 
   return true;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.integer(Infinity), &#x27;infinity is not integer&#x27;);
+t.notOk(is.integer(null), &#x27;null is not integer&#x27;);
+t.notOk(is.integer(), &#x27;undefined is not integer&#x27;);
+t.end();
+});
+
+test(&#x27;is.maximum&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">maximum</span>(3, [3, 2, 1]), &#x27;3 is maximum of [3,2,1]&#x27;);
+t.ok(is.maximum(3, [1, 2, 3]), &#x27;3 is maximum of [1,2,3]&#x27;);
+t.ok(is.maximum(4, [1, 2, 3]), &#x27;4 is maximum of [1,2,3]&#x27;);
+t.ok(is.maximum(&#x27;c&#x27;, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]), &#x27;c is maximum of [a,b,c]&#x27;);
+t.notOk(is.maximum(2, [1, 2, 3]), &#x27;2 is not maximum of [1,2,3]&#x27;);
+
+var nanError = new TypeError(&#x27;NaN is not a valid value&#x27;);
+t[&#x27;throws&#x27;](function () { return is.maximum(NaN); }, nanError, &#x27;throws when first value is NaN&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1324,7 +1613,22 @@ is.decimal = function (value) {
 
   return true;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var error = new TypeError(&#x27;second argument must be array-like&#x27;);
+t[&#x27;throws&#x27;](function () { return is.maximum(2, null); }, error, &#x27;throws when second value is not array-like&#x27;);
+t[&#x27;throws&#x27;](function () { return is.maximum(2, {}); }, error, &#x27;throws when second value is not array-like&#x27;);
+t.end();
+});
+
+test(&#x27;is.minimum&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">minimum</span>(1, [1, 2, 3]), &#x27;1 is minimum of [1,2,3]&#x27;);
+t.ok(is.minimum(0, [1, 2, 3]), &#x27;0 is minimum of [1,2,3]&#x27;);
+t.ok(is.minimum(&#x27;a&#x27;, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]), &#x27;a is minimum of [a,b,c]&#x27;);
+t.notOk(is.minimum(2, [1, 2, 3]), &#x27;2 is not minimum of [1,2,3]&#x27;);
+
+var nanError = new TypeError(&#x27;NaN is not a valid value&#x27;);
+t[&#x27;throws&#x27;](function () { return is.minimum(NaN); }, nanError, &#x27;throws when first value is NaN&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1339,7 +1643,23 @@ is.decimal = function (value) {
     <li>description and source-code<pre class="apidocCodePre">nan = function (value) {
   return !is.number(value) || value !== value;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var error = new TypeError(&#x27;second argument must be array-like&#x27;);
+t[&#x27;throws&#x27;](function () { return is.minimum(2, null); }, error, &#x27;throws when second value is not array-like&#x27;);
+t[&#x27;throws&#x27;](function () { return is.minimum(2, {}); }, error, &#x27;throws when second value is not array-like&#x27;);
+t.end();
+});
+
+test(&#x27;is.nan&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">nan</span>(NaN), &#x27;NaN is not a number&#x27;);
+t.ok(is.nan(&#x27;abc&#x27;), &#x27;string is not a number&#x27;);
+t.ok(is.nan(true), &#x27;boolean is not a number&#x27;);
+t.ok(is.nan({}), &#x27;object is not a number&#x27;);
+t.ok(is.nan([]), &#x27;array is not a number&#x27;);
+t.ok(is.nan(function () {}), &#x27;function is not a number&#x27;);
+t.notOk(is.nan(0), &#x27;zero is a number&#x27;);
+t.notOk(is.nan(3), &#x27;three is a number&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1445,7 +1765,23 @@ is.args = is.arguments = function (value) {
     <li>description and source-code<pre class="apidocCodePre">odd = function (value) {
   return is.infinite(value) || (is.number(value) &#x26;&#x26; value === value &#x26;&#x26; value % 2 !== 0);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.notOk(is.even(), &#x27;undefined is not even&#x27;);
+t.notOk(is.even(null), &#x27;null is not even&#x27;);
+t.notOk(is.even(NaN), &#x27;NaN is not even&#x27;);
+t.end();
+});
+
+test(&#x27;is.odd&#x27;, function (t) {
+t.ok(is.<span class="apidocCodeKeywordSpan">odd</span>(1), &#x27;zero is odd&#x27;);
+t.ok(is.odd(3), &#x27;two is odd&#x27;);
+t.ok(is.odd(Infinity), &#x27;infinity is odd&#x27;);
+t.notOk(is.odd(0), &#x27;0 is not odd&#x27;);
+t.notOk(is.odd(2), &#x27;2 is not odd&#x27;);
+t.notOk(is.odd(), &#x27;undefined is not odd&#x27;);
+t.notOk(is.odd(null), &#x27;null is not odd&#x27;);
+t.notOk(is.odd(NaN), &#x27;NaN is not odd&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1466,7 +1802,23 @@ is.args = is.arguments = function (value) {
   }
   return true;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  st.end();
+});
+
+t.end();
+});
+
+test(&#x27;is.primitive&#x27;, function (t) {
+t.notOk(is.<span class="apidocCodeKeywordSpan">primitive</span>({}), &#x27;object literal is not a primitive&#x27;);
+t.notOk(is.primitive([]), &#x27;array is not a primitive&#x27;);
+t.ok(is.primitive(), &#x27;undefined is a primitive&#x27;);
+t.ok(is.primitive(null), &#x27;null is a primitive&#x27;);
+t.ok(is.primitive(true), &#x27;true is a primitive&#x27;);
+t.ok(is.primitive(&#x27;&#x27;), &#x27;string is a primitive&#x27;);
+t.ok(is.primitive(NaN), &#x27;NaN is a primitive&#x27;);
+t.notOk(is.primitive(Object), &#x27;object constructor is not a primitive&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1481,7 +1833,22 @@ is.args = is.arguments = function (value) {
     <li>description and source-code<pre class="apidocCodePre">regexp = function (value) {
   return toStr.call(value) === &#x27;[object RegExp]&#x27;;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    st.end();
+  });
+
+  t.end();
+});
+
+test(&#x27;is.regexp&#x27;, function (t) {
+  t.ok(is.<span class="apidocCodeKeywordSpan">regexp</span>(/a/g), &#x27;regex literal is regex&#x27;);
+  t.ok(is.regexp(new RegExp(&#x27;a&#x27;, &#x27;g&#x27;)), &#x27;regex object is regex&#x27;);
+  t.notOk(is.regexp(), &#x27;undefined is not regex&#x27;);
+  t.notOk(is.regexp(function () {}), &#x27;function is not regex&#x27;);
+  t.notOk(is.regexp(&#x27;/a/g&#x27;), &#x27;string regex is not regex&#x27;);
+  t.end();
+});
+...</pre></li>
     </ul>
 
 
@@ -1528,7 +1895,24 @@ is.base64 = function (value) {
   return typeof Symbol === &#x27;function&#x27; &#x26;&#x26; toStr.call(value) === &#x27;[object Symbol]&#x27; &#x26;&#x26; typeof symbolValueOf.call(value) === &#x27;symbol
 &#x27;;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.end();
+});
+
+test(&#x27;is.symbol&#x27;, function (t) {
+t.test(&#x27;not symbols&#x27;, function (st) {
+  var notSymbols = [true, false, null, undefined, {}, [], function () {}, 42, NaN, Infinity, /a/g, &#x27;&#x27;, 0, -0, new Error
+(&#x27;error&#x27;)];
+  forEach(notSymbols, function (notSymbol) {
+    st.notOk(is.<span class="apidocCodeKeywordSpan">symbol</span>(notSymbol), notSymbol + &#x27; is not symbol&#x27;);
+  });
+
+  st.end();
+});
+
+t.test(&#x27;symbols&#x27;, { skip: typeof Symbol !== &#x27;function&#x27; }, function (st) {
+  st.ok(is.symbol(Symbol(&#x27;foo&#x27;)), &#x27;Symbol(&#x22;foo&#x22;) is symbol&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1558,7 +1942,23 @@ is.base64 = function (value) {
     <li>description and source-code<pre class="apidocCodePre">type = function (value, type) {
   return typeof value === type;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var toStr = Object.prototype.toString;
+
+var genFn = require(&#x27;make-generator-function&#x27;);
+
+test(&#x27;is.type&#x27;, function (t) {
+var booleans = [true, false];
+forEach(booleans, function (boolean) {
+  t.ok(is.<span class="apidocCodeKeywordSpan">type</span>(boolean, &#x27;boolean&#x27;), &#x27;&#x22;&#x27; + boolean + &#x27;&#
+x22; is a boolean&#x27;);
+});
+
+var numbers = [1, 0 / 1, 0 / -1, NaN, Infinity, -Infinity];
+forEach(numbers, function (number) {
+  t.ok(is.type(number, &#x27;number&#x27;), &#x27;&#x22;&#x27; + number + &#x27;&#x22; is a number&#x27;);
+});
+...</pre></li>
     </ul>
 
 
@@ -1573,7 +1973,23 @@ is.base64 = function (value) {
     <li>description and source-code<pre class="apidocCodePre">undef = function (value) {
   return typeof value === &#x27;undefined&#x27;;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  t.ok(is.type(undefined, &#x27;undefined&#x27;), &#x27;undefined is undefined&#x27;);
+
+  t.end();
+});
+
+test(&#x27;is.undef&#x27;, function (t) {
+  t.ok(is.<span class="apidocCodeKeywordSpan">undef</span>(), &#x27;absent undefined is undefined&#x27;);
+  t.ok(is.undef(undefined), &#x27;literal undefined is undefined&#x27;);
+  t.notOk(is.undef(null), &#x27;null is not undefined&#x27;);
+  t.notOk(is.undef({}), &#x27;object is not undefined&#x27;);
+  t.end();
+});
+
+test(&#x27;is.defined&#x27;, function (t) {
+...</pre></li>
     </ul>
 
 
@@ -1609,7 +2025,24 @@ is.base64 = function (value) {
   var isAnyInfinite = is.infinite(value) || is.infinite(start) || is.infinite(finish);
   return isAnyInfinite || (value &#x3e;= start &#x26;&#x26; value &#x3c;= finish);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t[&#x27;throws&#x27;](function () { return is.lt(2, NaN); }, error, &#x27;throws when second value is NaN&#x27;);
+t.end();
+});
+
+test(&#x27;is.within&#x27;, function (t) {
+t.test(&#x27;throws on NaN&#x27;, function (st) {
+  var nanError = new TypeError(&#x27;NaN is not a valid value&#x27;);
+  st[&#x27;throws&#x27;](function () { return is.<span class="apidocCodeKeywordSpan">within</span>(NaN, 0, 0); }, nanError, &#x27
+;throws when first value is NaN&#x27;);
+  st[&#x27;throws&#x27;](function () { return is.within(0, NaN, 0); }, nanError, &#x27;throws when second value is NaN&#x27;);
+  st[&#x27;throws&#x27;](function () { return is.within(0, 0, NaN); }, nanError, &#x27;throws when third value is NaN&#x27;);
+  st.end();
+});
+
+t.test(&#x27;throws on non-number&#x27;, function (st) {
+  var error = new TypeError(&#x27;all arguments must be numbers&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -1629,7 +2062,23 @@ is.base64 = function (value) {
     <li>description and source-code<pre class="apidocCodePre">empty = function (value) {
   return is.args(value) &#x26;&#x26; value.length === 0;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Add license and downloads badges
+* Update `jscs`
+
+2.0.0 / 2014-08-25
+==================
+* Add `make release`
+* Update copyright notice.
+* Fix is.<span class="apidocCodeKeywordSpan">empty</span>(new String())
+
+1.1.0 / 2014-08-22
+==================
+* Removing redundant license
+* Add a non-deprecated method for is.null
+* Use a more reliable valueOf coercion for is.false/is.true
+* Clean up `README.md`
+...</pre></li>
     </ul>
 
 
@@ -1678,7 +2127,23 @@ is.object(value) &#x26;&#x26; is.fn(value.callee);
     <li>description and source-code<pre class="apidocCodePre">empty = function (value) {
   return is.array(value) &#x26;&#x26; value.length === 0;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Add license and downloads badges
+* Update `jscs`
+
+2.0.0 / 2014-08-25
+==================
+* Add `make release`
+* Update copyright notice.
+* Fix is.<span class="apidocCodeKeywordSpan">empty</span>(new String())
+
+1.1.0 / 2014-08-22
+==================
+* Removing redundant license
+* Add a non-deprecated method for is.null
+* Use a more reliable valueOf coercion for is.false/is.true
+* Clean up `README.md`
+...</pre></li>
     </ul>
 
 
@@ -1729,7 +2194,22 @@ is.date.valid = function (value) {
     <li>description and source-code<pre class="apidocCodePre">valid = function (value) {
   return is.date(value) &#x26;&#x26; !isNaN(Number(value));
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var F = function () {};
+F.prototype = new Date();
+t.notOk(is.date(new F()), &#x27;Date subtype is not date&#x27;);
+t.end();
+});
+
+test(&#x27;is.date.valid&#x27;, function (t) {
+t.ok(is.date.<span class="apidocCodeKeywordSpan">valid</span>(new Date()), &#x27;new Date() is a valid date&#x27;);
+t.notOk(is.date.valid(new Date(&#x27;&#x27;)), &#x27;new Date(&#x22;&#x22;) is not a valid date&#x27;);
+t.end();
+});
+
+test(&#x27;is.element&#x27;, function (t) {
+t.notOk(is.element(), &#x27;undefined is not element&#x27;);
+...</pre></li>
     </ul>
 
 
