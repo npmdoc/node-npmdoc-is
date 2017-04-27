@@ -1,6 +1,6 @@
 # npmdoc-is
 
-#### api documentation for  [is (v3.2.1)](https://github.com/enricomarino/is)  [![npm package](https://img.shields.io/npm/v/npmdoc-is.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-is) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-is.svg)](https://travis-ci.org/npmdoc/node-npmdoc-is)
+#### basic api documentation for  [is (v3.2.1)](https://github.com/enricomarino/is)  [![npm package](https://img.shields.io/npm/v/npmdoc-is.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-is) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-is.svg)](https://travis-ci.org/npmdoc/node-npmdoc-is)
 
 #### the definitive JavaScript type testing library
 
@@ -21,36 +21,13 @@
 ```json
 
 {
-    "name": "is",
-    "version": "3.2.1",
-    "main": "index.js",
-    "scripts": {
-        "prepublish": "safe-publish-latest",
-        "pretest": "npm run lint",
-        "test": "npm run --silent tests-only",
-        "tests-only": "node test/index.js",
-        "coverage": "covert test/index.js",
-        "coverage-quiet": "covert test/index.js --quiet",
-        "lint": "npm run jscs && npm run eslint",
-        "jscs": "jscs *.js */*.js",
-        "eslint": "eslint *.js */*.js"
-    },
     "author": {
         "name": "Enrico Marino",
         "url": "http://onirame.com"
     },
-    "description": "the definitive JavaScript type testing library",
-    "homepage": "https://github.com/enricomarino/is",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/enricomarino/is.git"
+    "bugs": {
+        "url": "https://github.com/enricomarino/is/issues"
     },
-    "keywords": [
-        "util",
-        "type",
-        "test"
-    ],
     "contributors": [
         {
             "name": "Jordan Harband",
@@ -58,6 +35,7 @@
         }
     ],
     "dependencies": {},
+    "description": "the definitive JavaScript type testing library",
     "devDependencies": {
         "@ljharb/eslint-config": "^11.0.0",
         "covert": "^1.1.0",
@@ -67,6 +45,48 @@
         "make-generator-function": "^1.1.0",
         "safe-publish-latest": "^1.1.1",
         "tape": "^4.6.3"
+    },
+    "directories": {},
+    "dist": {
+        "shasum": "d0ac2ad55eb7b0bec926a5266f6c662aaa83dca5",
+        "tarball": "https://registry.npmjs.org/is/-/is-3.2.1.tgz"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "gitHead": "f6952692d5b864da8db24267166fe2683e338581",
+    "homepage": "https://github.com/enricomarino/is",
+    "keywords": [
+        "util",
+        "type",
+        "test"
+    ],
+    "license": "MIT",
+    "main": "index.js",
+    "maintainers": [
+        {
+            "name": "ljharb"
+        },
+        {
+            "name": "enricomarino"
+        }
+    ],
+    "name": "is",
+    "optionalDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/enricomarino/is.git"
+    },
+    "scripts": {
+        "coverage": "covert test/index.js",
+        "coverage-quiet": "covert test/index.js --quiet",
+        "eslint": "eslint *.js */*.js",
+        "jscs": "jscs *.js */*.js",
+        "lint": "npm run jscs && npm run eslint",
+        "prepublish": "safe-publish-latest",
+        "pretest": "npm run lint",
+        "test": "npm run --silent tests-only",
+        "tests-only": "node test/index.js"
     },
     "testling": {
         "files": "test/index.js",
@@ -85,9 +105,8 @@
             "iphone/6.0..latest"
         ]
     },
-    "engines": {
-        "node": "*"
-    }
+    "version": "3.2.1",
+    "bin": {}
 }
 ```
 
